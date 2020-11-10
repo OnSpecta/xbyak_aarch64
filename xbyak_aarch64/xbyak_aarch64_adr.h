@@ -427,6 +427,7 @@ inline AdrImm ptr(const XReg &xn, int32_t imm) { return AdrImm(xn, imm); }
 
 inline AdrUimm ptr(const XReg &xn, uint32_t uimm) { return AdrUimm(xn, uimm); }
 
+
 inline AdrReg ptr(const XReg &xn, const XReg &xm) { return AdrReg(xn, xm); }
 
 inline AdrReg ptr(const XReg &xn, const XReg &xm, ShMod mod, uint32_t sh) {

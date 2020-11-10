@@ -104,7 +104,11 @@ public:
   bool isZReg() const { return is(ZREG); }
   bool isPRegZ() const { return is(PREG_Z); }
   bool isPRegM() const { return is(PREG_M); }
-
+  void invalidate() { kind_ = Kind::NONE; }  // dls extension
+  bool is_invalid() const { return kind_ == Kind::NONE; }  // dls extension
+  std::string toString() const {
+    return "Kind" + std::to_string((int)kind_) + ", Bits" + std::to_string(bit_);
+  } // dls extension
 private:
   bool is(Kind kind) const { return (kind_ == kind); }
 };
@@ -116,6 +120,10 @@ public:
   explicit Reg(uint32_t index, Kind kind, uint32_t bit)
       : Operand(kind, bit), index_(index) {}
   uint32_t getIdx() const { return index_; }
+  std::string toString() const {
+    return Operand::toString() + ", idx:" + std::to_string(index_);
+  }  // dls extension
+
 };
 
 // General Purpose Register
